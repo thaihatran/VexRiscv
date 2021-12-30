@@ -1,0 +1,228 @@
+Archive member included to satisfy reference by file (symbol)
+
+/opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a(lib_a-memcpy.o)
+                              build/src/memcpy.o (memcpy)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+onChipRom        0x0000000040000000 0x0000000000001c00 xr
+stack            0x0000000040001c00 0x0000000000000400 w !xr
+onChipRam        0x0000000080000000 0x0000000000004000 w !xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD build/src/briey_main.o
+LOAD build/src/briey_crt.o
+LOAD build/src/memcpy.o
+LOAD build/src/aes.o
+LOAD /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a
+LOAD /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a
+LOAD /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a
+                0x0000000000000800                _stack_size = 0x800
+                0x0000000000000000                _heap_size = 0x0
+
+.vector         0x0000000080000000      0x114
+ *crt.o(.text)
+ .text          0x0000000080000000      0x114 build/src/briey_crt.o
+                0x0000000080000000                crtStart
+                0x0000000080000020                trap_entry
+
+.memory         0x0000000080000114      0xf8c
+ *(.text)
+ .text          0x0000000080000114       0xdc build/src/briey_main.o
+                0x0000000080000170                print
+                0x00000000800001a8                irqCallback
+                0x00000000800001e4                clock
+ .text          0x00000000800001f0      0x1f4 build/src/memcpy.o
+                0x00000000800001f0                memcpy1
+                0x0000000080000370                memcmp1
+ .text          0x00000000800003e4      0xb94 build/src/aes.o
+                0x0000000080000f54                AES_init_ctx
+                0x0000000080000f58                AES_ECB_encrypt
+                0x0000000080000f68                AES_ECB_decrypt
+ .text          0x0000000080000f78      0x128 /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a(lib_a-memcpy.o)
+                0x0000000080000f78                memcpy
+                0x00000000800010a0                end = .
+
+.text.startup   0x00000000800010a0       0x9c
+ .text.startup  0x00000000800010a0       0x9c build/src/briey_main.o
+                0x00000000800010a0                main
+
+.rodata         0x000000008000113c      0x20c
+ *(.rdata)
+ *(.rodata .rodata.*)
+ .rodata        0x000000008000113c      0x20c build/src/aes.o
+ *(.gnu.linkonce.r.*)
+
+.rela.dyn       0x0000000080001348        0x0
+ .rela.text     0x0000000080001348        0x0 build/src/briey_main.o
+
+.ctors          0x0000000080001348        0x0
+                0x0000000080001348                . = ALIGN (0x4)
+                0x0000000080001348                _ctors_start = .
+ *(.init_array*)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+                0x0000000080001348                . = ALIGN (0x4)
+                0x0000000080001348                _ctors_end = .
+
+.data           0x0000000080001348        0x0
+ *(.rdata)
+ *(.rodata .rodata.*)
+ *(.gnu.linkonce.r.*)
+ *(.data .data.*)
+ .data          0x0000000080001348        0x0 build/src/briey_main.o
+ .data          0x0000000080001348        0x0 build/src/briey_crt.o
+ .data          0x0000000080001348        0x0 build/src/memcpy.o
+ .data          0x0000000080001348        0x0 build/src/aes.o
+ .data          0x0000000080001348        0x0 /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a(lib_a-memcpy.o)
+ *(.gnu.linkonce.d.*)
+                0x0000000080001348                . = ALIGN (0x8)
+                0x0000000080001b48                PROVIDE (__global_pointer$ = (. + 0x800))
+ *(.sdata .sdata.*)
+ *(.gnu.linkonce.s.*)
+                0x0000000080001348                . = ALIGN (0x8)
+ *(.srodata.cst16)
+ *(.srodata.cst8)
+ *(.srodata.cst4)
+ *(.srodata.cst2)
+ *(.srodata .srodata.*)
+
+.bss            0x0000000080001348       0x10
+                0x0000000080001348                . = ALIGN (0x4)
+                0x0000000080001348                _bss_start = .
+ *(.sbss*)
+ .sbss          0x0000000080001348       0x10 build/src/briey_main.o
+                0x000000008000134c                exception_cause
+                0x0000000080001350                exception_instr
+                0x0000000080001354                exception_addr
+ *(.gnu.linkonce.sb.*)
+ *(.bss .bss.*)
+ .bss           0x0000000080001358        0x0 build/src/briey_main.o
+ .bss           0x0000000080001358        0x0 build/src/briey_crt.o
+ .bss           0x0000000080001358        0x0 build/src/memcpy.o
+ .bss           0x0000000080001358        0x0 build/src/aes.o
+ .bss           0x0000000080001358        0x0 /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a(lib_a-memcpy.o)
+ *(.gnu.linkonce.b.*)
+ *(COMMON)
+                0x0000000080001358                . = ALIGN (0x4)
+                0x0000000080001358                _bss_end = .
+
+.noinit         0x0000000080001358        0x0
+                0x0000000080001358                . = ALIGN (0x4)
+ *(.noinit .noinit.*)
+                0x0000000080001358                . = ALIGN (0x4)
+
+._user_heap     0x0000000080001358        0x0
+                0x0000000080001358                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (end = .)
+                [!provide]                        PROVIDE (_end = .)
+                [!provide]                        PROVIDE (_heap_start = .)
+                0x0000000080001358                . = (. + _heap_size)
+                0x0000000080001358                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (_heap_end = .)
+
+._stack         0x0000000080001358      0x808
+                0x0000000080001360                . = ALIGN (0x10)
+ *fill*         0x0000000080001358        0x8 
+                [!provide]                        PROVIDE (_stack_end = .)
+                0x0000000080001b60                . = (. + _stack_size)
+ *fill*         0x0000000080001360      0x800 
+                0x0000000080001b60                . = ALIGN (0x10)
+                0x0000000080001b60                PROVIDE (_stack_start = .)
+OUTPUT(build/briey.elf elf32-littleriscv)
+
+.debug_info     0x0000000000000000     0x115c
+ .debug_info    0x0000000000000000      0x473 build/src/briey_main.o
+ .debug_info    0x0000000000000473       0x25 build/src/briey_crt.o
+ .debug_info    0x0000000000000498      0x33e build/src/memcpy.o
+ .debug_info    0x00000000000007d6      0x986 build/src/aes.o
+
+.debug_abbrev   0x0000000000000000      0x5b2
+ .debug_abbrev  0x0000000000000000      0x242 build/src/briey_main.o
+ .debug_abbrev  0x0000000000000242       0x14 build/src/briey_crt.o
+ .debug_abbrev  0x0000000000000256      0x132 build/src/memcpy.o
+ .debug_abbrev  0x0000000000000388      0x22a build/src/aes.o
+
+.debug_loclists
+                0x0000000000000000      0xf13
+ .debug_loclists
+                0x0000000000000000       0x84 build/src/briey_main.o
+ .debug_loclists
+                0x0000000000000084      0x3f4 build/src/memcpy.o
+ .debug_loclists
+                0x0000000000000478      0xa9b build/src/aes.o
+
+.debug_aranges  0x0000000000000000       0x88
+ .debug_aranges
+                0x0000000000000000       0x28 build/src/briey_main.o
+ .debug_aranges
+                0x0000000000000028       0x20 build/src/briey_crt.o
+ .debug_aranges
+                0x0000000000000048       0x20 build/src/memcpy.o
+ .debug_aranges
+                0x0000000000000068       0x20 build/src/aes.o
+
+.debug_rnglists
+                0x0000000000000000       0xb6
+ .debug_rnglists
+                0x0000000000000000       0x56 build/src/briey_main.o
+ .debug_rnglists
+                0x0000000000000056       0x60 build/src/memcpy.o
+
+.debug_line     0x0000000000000000     0x2363
+ .debug_line    0x0000000000000000      0x47b build/src/briey_main.o
+ .debug_line    0x000000000000047b      0x1c8 build/src/briey_crt.o
+ .debug_line    0x0000000000000643      0x3cf build/src/memcpy.o
+ .debug_line    0x0000000000000a12     0x1951 build/src/aes.o
+
+.debug_str      0x0000000000000000      0x3e0
+ .debug_str     0x0000000000000000      0x28b build/src/briey_main.o
+                                        0x2d6 (size before relaxing)
+ .debug_str     0x000000000000028b       0x57 build/src/briey_crt.o
+ .debug_str     0x00000000000002e2       0x3f build/src/memcpy.o
+                                        0x165 (size before relaxing)
+ .debug_str     0x0000000000000321       0xbf build/src/aes.o
+                                        0x236 (size before relaxing)
+
+.debug_line_str
+                0x0000000000000000      0x25f
+ .debug_line_str
+                0x0000000000000000      0x115 build/src/briey_main.o
+                                        0x171 (size before relaxing)
+ .debug_line_str
+                0x0000000000000115        0xc build/src/briey_crt.o
+                                         0x20 (size before relaxing)
+ .debug_line_str
+                0x0000000000000121       0xfc build/src/memcpy.o
+                                        0x170 (size before relaxing)
+ .debug_line_str
+                0x000000000000021d       0x42 build/src/aes.o
+                                        0x111 (size before relaxing)
+
+.comment        0x0000000000000000       0x12
+ .comment       0x0000000000000000       0x12 build/src/briey_main.o
+                                         0x13 (size before relaxing)
+ .comment       0x0000000000000012       0x13 build/src/memcpy.o
+ .comment       0x0000000000000012       0x13 build/src/aes.o
+ .comment       0x0000000000000012       0x13 /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a(lib_a-memcpy.o)
+
+.riscv.attributes
+                0x0000000000000000       0x25
+ .riscv.attributes
+                0x0000000000000000       0x25 build/src/briey_main.o
+ .riscv.attributes
+                0x0000000000000025       0x23 build/src/briey_crt.o
+ .riscv.attributes
+                0x0000000000000048       0x21 build/src/memcpy.o
+ .riscv.attributes
+                0x0000000000000069       0x21 build/src/aes.o
+ .riscv.attributes
+                0x000000000000008a       0x21 /opt/riscv32im/lib/gcc/riscv32-unknown-elf/11.1.0/../../../../riscv32-unknown-elf/lib/libc.a(lib_a-memcpy.o)
+
+.debug_frame    0x0000000000000000      0x2d4
+ .debug_frame   0x0000000000000000       0xa8 build/src/briey_main.o
+ .debug_frame   0x00000000000000a8       0x60 build/src/memcpy.o
+ .debug_frame   0x0000000000000108      0x1cc build/src/aes.o
